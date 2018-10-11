@@ -77,10 +77,16 @@ a {
     display: none;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 750px) {
     body {
         position: relative; 
     }
+    .header {
+        padding-top: 60px;
+    }
+}
+
+@media (max-width: 450px) {
     ul {
         text-align: center;
     }
@@ -122,8 +128,5 @@ a {
         color: white;
         font-family: Arial;
         margin-left: 40px;
-    }
-    .header {
-        padding-top: 60px;
     }
 }
