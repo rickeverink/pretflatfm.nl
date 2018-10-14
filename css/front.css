@@ -40,7 +40,7 @@ h3 {
     padding-bottom: 20px;
     font-weight: thin;
 }
-.header {
+.header, .footer {
     padding-top: 100px;
 }
 .content {
@@ -84,6 +84,7 @@ td {
     vertical-align: top;
     padding-right: 10px;
     min-width: 115px;
+    max-width: 530px;
 }
 
 @media (max-width: 750px) {
