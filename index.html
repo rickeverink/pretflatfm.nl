@@ -6,9 +6,9 @@ permalink: /
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+        <title>{{ site.title }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="{{ site.description }}">
+        <meta name="description" content="{{ site.title }} {{ site.description }}">
         <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
         {% if site.favicon_img %}
         <link rel="shortcut icon" href="{{ site.favicon_img_path }}" />
@@ -38,6 +38,10 @@ permalink: /
             </audio>
 
             <ul>
+                {% if site.whatsapp_number %}
+                <li><a class="fa fa-2x fa-whatsapp" href="https://api.whatsapp.com/send?phone={{ site.whatsapp_number }}"><span class="description">Whatsapp</span></a></li>
+                {% endif %}
+
                 {% if site.phone_number %}
                 <li><a class="fa fa-2x fa-phone" href="tel:{{ site.phone_number }}"><span class="description">Telefoon</span></a></li>
                 {% endif %}
@@ -61,12 +65,80 @@ permalink: /
                 {% if site.instagram_username %}
                 <li><a class="fa fa-2x fa-instagram" href="https://instagram.com/{{ site.instagram_username }}"><span class="description">Instagram</span></a></li>
                 {% endif %}
+
+                {% if site.lastfm_username %}
+                <li><a class="fa fa-2x fa-lastfm" href="https://www.last.fm/user/{{ site.lastfm_username }}"><span class="description">Last.fm</span></a></li>
+                {% endif %}
             </ul>
 
             <h2>Timetable</h2>
-            <h3>Wordt spoedig bekend gemaakt!</h3>
-            <h3>Kijk in de tussentijd op onze sociale media!</h3>
+            <table style="margin: 0 auto; color:white;text-align: left; font-size: 1.2em;">
+                    <tr>
+                        <td>09:00 - 11:00</td>
+                        <td>
+                            <strong>TGI(P)F</strong><br/>
+                            Reyer van Harten
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>11:00 - 13:00</td>
+                        <td>
+                            <strong>De muziekale fruitmand</strong><br/>
+                            Matthijs Prins en Patrick Dikkers
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>13:00 - 15:00</td>
+                        <td>
+                            <strong>TBD</strong><br/>
+                            Auke Verbeek
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>15:00 - 17:00</td>
+                        <td>
+                            <strong>The Fuzz</strong><br/>
+                             Stony Waanders en Rob Leferink
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>17:00 - 19:00</td>
+                        <td>
+                            <strong>TBD</strong><br/>
+                            Rick Everink en Anne-Fleur Kramer
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>19:00 - 21:00</td>
+                        <td>
+                            <strong>Zotte Zaterdag Zjow</strong><br/>
+                            Jörgen Bok en Joost van Gelder
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>21:00 - 23:00</td>
+                        <td>
+                            <strong>Rock@Nine</strong><br/>
+                            Remco Koopmans, Kenny Masselink en Rutger Spanjer
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>23:00 - 01:00</td>
+                        <td>
+                            <strong>Dance Into The Night</strong><br/>
+                            Rob Leferink en Rick Everink
+                        </td>
+                    </tr>
+                </table>
             <div class="footer"></div>
         </div>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136064423-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-136064423-1');
+    </script>
     </body>
 </html>

@@ -1,15 +1,18 @@
 # Site settings
 name: Zaterdag 06-04-19
-description: Van 11:00 tot 01:00
+description: Van 09:00 tot 01:00
 url: ""
-title: Pretflat FM
+title: Pretflat FM - Live Visual Radio
+keywords: 
 
+whatsapp_number: 31610172017
 phone_number: 0852014208
 facebook_username: pretflatfm
 instagram_username:  pretflatfm
 youtube_username: UCN1R3cUC0jUFpohKSu_Fnow
 twitch_username: pretflatfm
 twitter_hashtag: PFFM
+lastfm_username: pretflatfm
 
 avatar: yes
 avatar_img_path: "imgs/avatar.jpg"
