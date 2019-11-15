@@ -60,6 +60,10 @@ permalink: /
                 <li><a class="fa fa-2x fa-youtube" href="https://youtube.com/channel/{{ site.youtube_username }}"><span class="description">Youtube</span></a></li>
                 {% endif %}
 
+                {% if site.mixer_username %}
+                <li><a class="fa fa-2x fa-windows" href="https://mixer.com/{{ site.mixer_username }}"><span class="description">Mixer</span></a></li>
+                {% endif %}
+
                 {% if site.twitter_hashtag %}
                 <li><a class="fa fa-2x fa-twitter" href="https://twitter.com/search?q=%23{{ site.twitter_hashtag }}"><span class="description">Twitter</span></a></li>
                 {% endif %}
