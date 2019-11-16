@@ -21,7 +21,8 @@ permalink: /
         {% endif %}
         <link rel="stylesheet" href="{{ "/css/front.css" | prepend: site.baseurl }}">
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <div class="content">
@@ -78,6 +79,10 @@ permalink: /
 
                 {% if site.lastfm_username %}
                 <li><a class="fa fa-2x fa-lastfm" href="https://www.last.fm/user/{{ site.lastfm_username }}"><span class="description">Last.fm</span></a></li>
+                {% endif %}
+
+                {% if site.telegram_username %}
+                <li><a class="fa fa-2x fa-telegram" href="https://t.me/{{ site.telegram_username }}"><span class="description">Telegram</span></a></li>
                 {% endif %}
             </ul>
 
