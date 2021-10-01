@@ -38,56 +38,114 @@ permalink: /
             <h1>{{ site.name }}</h1>
             <h3>{{ site.description }}</h3>
 
-            <audio controls>
-                <source src="http://stream.pretflatfm.nl:8000/live" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
+            {% if site.stream %}
+                <audio controls>
+                    <source src="{{ site.stream }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            {% endif %}
 
             <ul>
                 {% if site.whatsapp_number %}
-                <li><a class="fab fa-2x fa-whatsapp" href="https://api.whatsapp.com/send?phone={{ site.whatsapp_number }}"><span class="description">Whatsapp</span></a></li>
+                <li><a class="fab fa-2x fa-whatsapp" href="https://api.whatsapp.com/send?phone={{ site.whatsapp_number }}" target="_blank"><span class="description">Whatsapp</span></a></li>
                 {% endif %}
 
                 {% if site.phone_number %}
-                <li><a class="fa fa-2x fa-phone" href="tel:{{ site.phone_number }}"><span class="description">Telefoon</span></a></li>
+                <li><a class="fa fa-2x fa-phone" href="tel:{{ site.phone_number }}" target="_blank"><span class="description">Telefoon</span></a></li>
                 {% endif %}
 
                 {% if site.twitch_username %}
-                <li><a class="fab fa-2x fa-twitch" href="https://twitch.tv/{{ site.twitch_username }}"><span class="description">Twitch</span></a></li>
+                <li><a class="fab fa-2x fa-twitch" href="https://twitch.tv/{{ site.twitch_username }}" target="_blank"><span class="description">Twitch</span></a></li>
                 {% endif %}
 
                 {% if site.youtube_username %}
-                <li><a class="fab fa-2x fa-youtube" href="https://youtube.com/channel/{{ site.youtube_username }}"><span class="description">Youtube</span></a></li>
+                <li><a class="fab fa-2x fa-youtube" href="https://youtube.com/channel/{{ site.youtube_username }}" target="_blank"><span class="description">Youtube</span></a></li>
                 {% endif %}
 
                 {% if site.mixer_username %}
-                <li><a class="fab fa-2x fa-mixer" href="https://mixer.com/{{ site.mixer_username }}"><span class="description">Mixer</span></a></li>
+                <li><a class="fab fa-2x fa-mixer" href="https://mixer.com/{{ site.mixer_username }}" target="_blank"><span class="description">Mixer</span></a></li>
                 {% endif %}
 
                 {% if site.twitter_hashtag %}
-                <li><a class="fab fa-2x fa-twitter" href="https://twitter.com/search?q=%23{{ site.twitter_hashtag }}"><span class="description">Twitter</span></a></li>
+                <li><a class="fab fa-2x fa-twitter" href="https://twitter.com/search?q=%23{{ site.twitter_hashtag }}" target="_blank"><span class="description">Twitter</span></a></li>
                 {% endif %}
 
                 {% if site.facebook_username %}
-                <li><a class="fab fa-2x fa-facebook" href="https://facebook.com/{{ site.facebook_username }}"><span class="description">Facebook</span></a></li>
+                <li><a class="fab fa-2x fa-facebook" href="https://facebook.com/{{ site.facebook_username }}" target="_blank"><span class="description">Facebook</span></a></li>
                 {% endif %}
 
                 {% if site.instagram_username %}
-                <li><a class="fab fa-2x fa-instagram" href="https://instagram.com/{{ site.instagram_username }}"><span class="description">Instagram</span></a></li>
+                <li><a class="fab fa-2x fa-instagram" href="https://instagram.com/{{ site.instagram_username }}" target="_blank"><span class="description">Instagram</span></a></li>
                 {% endif %}
 
                 {% if site.lastfm_username %}
-                <li><a class="fab fa-2x fa-lastfm" href="https://www.last.fm/user/{{ site.lastfm_username }}"><span class="description">Last.fm</span></a></li>
+                <li><a class="fab fa-2x fa-lastfm" href="https://www.last.fm/user/{{ site.lastfm_username }}" target="_blank"><span class="description">Last.fm</span></a></li>
                 {% endif %}
 
                 {% if site.telegram_username %}
-                <li><a class="fab fa-2x fa-telegram" href="https://t.me/{{ site.telegram_username }}"><span class="description">Telegram</span></a></li>
+                <li><a class="fab fa-2x fa-telegram" href="https://t.me/{{ site.telegram_username }}" target="_blank"><span class="description">Telegram</span></a></li>
                 {% endif %}
             </ul>
 
             <h2>Timetable</h2>
-            <h3>Wordt spoedig bekend gemaakt!</h3>
-            <h3>Kijk in de tussentijd op onze sociale media!</h3>
+            <table style="margin: 0 auto; color:white;text-align: left; font-size: 1.2em;">
+                <tr>
+                    <td>09:00 - 11:00</td>
+                    <td>
+                        <strong>TGI(P)F</strong><br/>
+                        Reyer van Harten
+                    </td>
+                </tr>
+                <tr>
+                    <td>11:00 - 13:00</td>
+                    <td>
+                        <strong>De overgang</strong><br/>
+                        Joost van Gelder
+                    </td>
+                </tr>
+                <tr>
+                    <td>13:00 - 15:00</td>
+                    <td>
+                        <strong>Gewoon Auke</strong><br/>
+                         Auke Verbeek
+                    </td>
+                </tr>
+                <tr>
+                    <td>15:00 - 17:00</td>
+                    <td>
+                        <strong>Bart's Quiz</strong><br/>
+                        Bart van der Burg & Coen Oudejans
+                    </td>
+                </tr>
+                <tr>
+                    <td>17:00 - 19:00</td>
+                    <td>
+                        <strong>De Rick en Anne-Fleur Show</strong><br/>
+                        Rick Everink en Anne-Fleur Kramer
+                    </td>
+                </tr>
+                <tr>
+                    <td>19:00 - 21:00</td>
+                    <td>
+                        <strong>Zotte Zaterdag Zjow</strong><br/>
+                        Jörgen Bok en Joost van Gelder
+                    </td>
+                </tr>
+                <tr>
+                    <td>21:00 - 23:00</td>
+                    <td>
+                        <strong>Party Rockers</strong><br/>
+                        Nick Kroep & Derk Wantia
+                    </td>
+                </tr>
+                <tr>
+                    <td>23:00 - 01:00</td>
+                    <td>
+                        <strong>Dance Into The Night</strong><br/>
+                        Rob Leferink
+                    </td>
+                </tr>
+            </table>
             <div class="footer"></div>
         </div>
 

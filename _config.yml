@@ -5,15 +5,17 @@ url: ""
 title: Pretflat FM - Live Visual Radio
 keywords: 
 
+stream: "http://stream.pretflatfm.nl:8000/live"
+
 whatsapp_number: 31613443414
-phone_number: 0852014208
+# phone_number: 0852014208
 facebook_username: pretflatfm
 instagram_username:  pretflatfm
 youtube_username: UCN1R3cUC0jUFpohKSu_Fnow
 twitch_username: pretflatfm
 twitter_hashtag: PFFM
 lastfm_username: pretflatfm
-mixer_username: pretflatfm
+# mixer_username: pretflatfm
 telegram_username: pretflatfm
 
 avatar: yes
