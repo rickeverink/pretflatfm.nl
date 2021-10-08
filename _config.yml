@@ -5,7 +5,7 @@ url: ""
 title: Pretflat FM - Live Visual Radio
 keywords: 
 
-stream: "http://stream.pretflatfm.nl:8000/live"
+stream: "http://stream.pretflatfm.nl:8000/mp3"
 
 whatsapp_number: 31613443414
 # phone_number: 0852014208
