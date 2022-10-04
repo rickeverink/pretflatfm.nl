@@ -38,6 +38,9 @@ permalink: /
             <h1>{{ site.name }}</h1>
             <h3>{{ site.description }}</h3>
 
+            <h2>Streams</h2>
+            <div id="twitch-embed"></div>
+
             {% if site.stream %}
                 <audio controls>
                     <source src="{{ site.stream }}" type="audio/mpeg">
@@ -45,13 +48,10 @@ permalink: /
                 </audio>
             {% endif %}
 
+            <h2>Socials</h2>
             <ul>
                 {% if site.whatsapp_number %}
                 <li><a class="fab fa-2x fa-whatsapp" href="https://api.whatsapp.com/send?phone={{ site.whatsapp_number }}" target="_blank"><span class="description">Whatsapp</span></a></li>
-                {% endif %}
-
-                {% if site.phone_number %}
-                <li><a class="fa fa-2x fa-phone" href="tel:{{ site.phone_number }}" target="_blank"><span class="description">Telefoon</span></a></li>
                 {% endif %}
 
                 {% if site.twitch_username %}
@@ -60,10 +60,6 @@ permalink: /
 
                 {% if site.youtube_username %}
                 <li><a class="fab fa-2x fa-youtube" href="https://youtube.com/channel/{{ site.youtube_username }}" target="_blank"><span class="description">Youtube</span></a></li>
-                {% endif %}
-
-                {% if site.mixer_username %}
-                <li><a class="fab fa-2x fa-mixer" href="https://mixer.com/{{ site.mixer_username }}" target="_blank"><span class="description">Mixer</span></a></li>
                 {% endif %}
 
                 {% if site.twitter_hashtag %}
@@ -99,50 +95,50 @@ permalink: /
                 <tr>
                     <td>11:00 - 13:00</td>
                     <td>
-                        <strong>De overgang</strong><br/>
+                        <strong>De Overgang</strong><br/>
                         Joost van Gelder
                     </td>
                 </tr>
                 <tr>
                     <td>13:00 - 15:00</td>
                     <td>
-                        <strong>Gewoon Auke</strong><br/>
-                         Auke Verbeek
+                        <strong>Bart's Quiz</strong><br/>
+                        Bart van der Burg
                     </td>
                 </tr>
                 <tr>
                     <td>15:00 - 17:00</td>
                     <td>
-                        <strong>Bart's Quiz</strong><br/>
-                        Bart van der Burg & Coen Oudejans
+                        <strong>Gewoon Auke</strong><br/>
+                        Auke Verbeek
                     </td>
                 </tr>
                 <tr>
                     <td>17:00 - 19:00</td>
                     <td>
-                        <strong>De Rick en Anne-Fleur Show</strong><br/>
+                        <strong>De Rick & Anne-Fleur Show</strong><br/>
                         Rick Everink & Anne-Fleur Kramer
                     </td>
                 </tr>
                 <tr>
                     <td>19:00 - 21:00</td>
                     <td>
-                        <strong>Zotte Zaterdag Zjow</strong><br/>
-                        Jörgen Bok & Joost van Gelder
+                        <strong>Kop d'r Veur</strong><br/>
+                        Rutger Spanjer
                     </td>
                 </tr>
                 <tr>
                     <td>21:00 - 23:00</td>
                     <td>
-                        <strong>Party Rockers</strong><br/>
-                        Nick Kroep & Derk Wantia
+                        <strong>Dance Into The Night & Party Rockers</strong><br/>
+                        Rob Leferink & Nick Kroep
                     </td>
                 </tr>
                 <tr>
                     <td>23:00 - 01:00</td>
                     <td>
-                        <strong>Dance Into The Night</strong><br/>
-                        Rob Leferink
+                        <strong>The 11th Hour</strong><br/>
+                        Remco Koopmans & Kenny Masselink
                     </td>
                 </tr>
             </table>
@@ -156,5 +152,13 @@ permalink: /
         gtag('js', new Date());
         gtag('config', 'UA-136064423-1');
     </script>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script type="text/javascript">
+        new Twitch.Embed('twitch-embed', {
+          width: 960,
+          height: 480,
+          channel: 'pretflatfm'
+        });
+      </script>
     </body>
 </html>
