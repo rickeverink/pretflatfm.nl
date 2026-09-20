@@ -1,0 +1,23 @@
+{% if site.stream %}
+<div class="docked-player" id="docked-player">
+    <button type="button" class="docked-player__toggle" id="docked-player-toggle" aria-label="Play audiostream">
+        <i class="fas fa-play" aria-hidden="true"></i>
+        <i class="fas fa-pause" aria-hidden="true"></i>
+    </button>
+    <div class="docked-player__eq" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+    <div class="docked-player__info">
+        <strong>Pretflat FM</strong>
+        <span>Live audiostream &mdash; luister mee!</span>
+    </div>
+    <div class="docked-player__volume">
+        <i class="fas fa-volume-up" aria-hidden="true"></i>
+        <input type="range" id="docked-player-volume" min="0" max="100" value="80" aria-label="Volume">
+    </div>
+    <button type="button" class="docked-player__close" id="docked-player-close" aria-label="Speler verbergen">
+        <i class="fas fa-times" aria-hidden="true"></i>
+    </button>
+    <audio id="docked-player-audio" preload="none">
+        <source src="{{ site.stream }}" type="audio/mpeg">
+    </audio>
+</div>
+{% endif %}
