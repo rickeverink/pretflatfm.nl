@@ -1,171 +1,166 @@
 ---
+layout: default
 permalink: /
 ---
-<!DOCTYPE html>
-<html>
-    <head>
-        <!-- 
-            Welkom op de page source van pretflatfm.nl
-            Leuk dat je dit gevonden hebt!
-
-            Stuur even je gegevens naar pretflatfm@gmail.com en je ontvangt van ons een presentje zodat je dag nog leuker wordt!
-        -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{{ site.title }}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="{{ site.title }} {{ site.description }}">
-        <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-        {% if site.favicon_img %}
-        <link rel="shortcut icon" href="{{ site.favicon_img_path }}" />
+<header class="hero">
+    <div class="hero__bg">
+        {% if site.front_img %}
+        <img src="{{ site.front_img_path }}" id="fullscreen" alt="">
         {% endif %}
-        <link rel="stylesheet" href="{{ "/css/front.css" | prepend: site.baseurl }}">
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-    </head>
-    <body>
-        <div class="content">
-            <div class="header"></div>
+        <div class="hero__scrim"></div>
+    </div>
 
-            {% if site.front_img %}
-            <img src="{{ site.front_img_path }}" id="fullscreen">
+    <div class="hero__grid">
+        <div class="hero__content">
+            <div class="hero__brand-row">
+                {% if site.avatar %}
+                <img class="hero__logo" src="{{ site.avatar_img_path }}" alt="{{ site.title }}">
+                {% endif %}
+                <h1><span class="brand-white">Pretflat</span> <span class="brand-yellow">FM</span></h1>
+            </div>
+
+            <p class="eyebrow-mono"></span>{{ site.name }} &middot; {{ site.description }} &middot; Live from {{ site.studio_name }} </p>
+
+            <p class="hero__intro">
+                Radio zoals het hoort: rechtstreeks uit een pretflat, het bier koud en je vrienden als publiek en luisteraars.
+                <br/>
+                Eén dag per jaar gaat de studio live. Van 's ochtends vroeg tot diep in de nacht. Gewoon, omdat het kan.
+            </p>
+
+            <div class="hero__cta">
+                <a class="btn" href="#" id="btn-listen-live">Luister nu live</a>
+                <a class="btn btn--outline" href="#timetable">Wie draaien er vandaag?</a>
+            </div>
+
+            {% if site.whatsapp_number %}
+            <a class="whatsapp-invite whatsapp-invite--studio" href="https://api.whatsapp.com/send?phone={{ site.whatsapp_number }}" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                Stuur een bericht naar de studio!
+            </a>
             {% endif %}
 
-            {% if site.avatar %}
-                <img src="{{ site.avatar_img_path }}" id="avatar">
+            {% if site.whatsapp_community_code %}
+            <a class="whatsapp-invite" href="https://chat.whatsapp.com/{{ site.whatsapp_community_code }}" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                Voor de echte fans, word lid van onze community!
+            </a>
             {% endif %}
-
-            <h1>{{ site.name }}</h1>
-            <h3>{{ site.description }}</h3>
-
-            <h2>Streams</h2>
-            <div id="twitch-embed"></div>
-
-            {% if site.stream %}
-                <audio controls>
-                    <source src="{{ site.stream }}" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            {% endif %}
-
-            <h2>Socials</h2>
-            <ul>
-                {% if site.whatsapp_number %}
-                <li><a class="fab fa-2x fa-whatsapp" href="https://api.whatsapp.com/send?phone={{ site.whatsapp_number }}" target="_blank"><span class="description">Whatsapp</span></a></li>
-                {% endif %}
-
-                {% if site.twitch_username %}
-                <li><a class="fab fa-2x fa-twitch" href="https://twitch.tv/{{ site.twitch_username }}" target="_blank"><span class="description">Twitch</span></a></li>
-                {% endif %}
-
-                {% if site.youtube_username %}
-                <li><a class="fab fa-2x fa-youtube" href="https://youtube.com/channel/{{ site.youtube_username }}" target="_blank"><span class="description">Youtube</span></a></li>
-                {% endif %}
-
-                {% if site.twitter_hashtag %}
-                <li><a class="fab fa-2x fa-twitter" href="https://twitter.com/search?q=%23{{ site.twitter_hashtag }}" target="_blank"><span class="description">Twitter</span></a></li>
-                {% endif %}
-
-                {% if site.facebook_username %}
-                <li><a class="fab fa-2x fa-facebook" href="https://facebook.com/{{ site.facebook_username }}" target="_blank"><span class="description">Facebook</span></a></li>
-                {% endif %}
-
-                {% if site.instagram_username %}
-                <li><a class="fab fa-2x fa-instagram" href="https://instagram.com/{{ site.instagram_username }}" target="_blank"><span class="description">Instagram</span></a></li>
-                {% endif %}
-
-                {% if site.lastfm_username %}
-                <li><a class="fab fa-2x fa-lastfm" href="https://www.last.fm/user/{{ site.lastfm_username }}" target="_blank"><span class="description">Last.fm</span></a></li>
-                {% endif %}
-
-                {% if site.telegram_username %}
-                <li><a class="fab fa-2x fa-telegram" href="https://t.me/{{ site.telegram_username }}" target="_blank"><span class="description">Telegram</span></a></li>
-                {% endif %}
-            </ul>
-
-            <h2>Timetable</h2>
-            <table style="margin: 0 auto; color:white;text-align: left; font-size: 1.2em;">
-                <tr>
-                    <td>09:00 - 11:00</td>
-                    <td>
-                        <strong>TGI(P)F</strong><br/>
-                        Reyer van Harten
-                    </td>
-                </tr>
-                <tr>
-                    <td>11:00 - 13:00</td>
-                    <td>
-                        <strong>Update FM</strong><br/>
-                        Matthijs Prins
-                    </td>
-                </tr>
-                <tr>
-                    <td>13:00 - 15:00</td>
-                    <td>
-                        <strong>Zotte Zaterdagmiddag Zjow</strong><br/>
-                        Joost van Gelder & Jörgen Bok
-                    </td>
-                </tr>
-                <tr>
-                    <td>15:00 - 17:00</td>
-                    <td>
-                        <strong>K'roep er maar in!</strong><br/>
-                        Nick Kroep
-                    </td>
-                </tr>
-                <tr>
-                    <td>17:00 - 19:00</td>
-                    <td>
-                        <strong>De Rick & Anne-Fleur Show</strong><br/>
-                        Rick Everink & Anne-Fleur Kramer
-                    </td>
-                </tr>
-                <tr>
-                    <td>19:00 - 21:00</td>
-                    <td>
-                        <strong>Saturday Night Party Flight</strong><br/>
-                        Auke Verbeek
-                    </td>
-                </tr>
-                <tr>
-                    <td>21:00 - 23:00</td>
-                    <td>
-                        <strong>Dance Into The Night</strong><br/>
-                        Rob Leferink & Nick Kroep
-                    </td>
-                </tr>
-                <tr>
-                    <td>23:00 - 01:00</td>
-                    <td>
-                        <strong>The 11th Hour</strong><br/>
-                        Remco Koopmans
-                    </td>
-                </tr>
-                <tr>
-                    <td>01:00 - xx:xx</td>
-                    <td>
-                        <strong>Radio Actief</strong><br/>
-                        Various DJ's
-                    </td>
-                </tr>
-            </table>
-            <div class="footer"></div>
+            <!--<p class="hero__note"><span class="eyebrow-mono__dot"></span>Nu te horen? Check de  player onderin je scherm.</p>-->
         </div>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136064423-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-136064423-1');
-    </script>
-    <script src="https://embed.twitch.tv/embed/v1.js"></script>
-    <script type="text/javascript">
-        new Twitch.Embed('twitch-embed', {
-        //   width: '80%',
-        //   height: 480,
-          channel: 'pretflatfm'
-        });
-      </script>
-    </body>
-</html>
+        <div class="hero__media">
+            <div class="stream-card">
+                <div class="stream-frame" id="twitch-embed"></div>
+                <div class="stream-card__badge" id="live-status">
+                    <span class="status-dot" id="live-dot"></span>
+                    <span id="live-label">Status wordt geladen&hellip;</span>
+                </div>
+                <button type="button" class="stream-card__chat-toggle" id="chat-toggle">
+                    <i class="fas fa-comments" aria-hidden="true"></i>
+                    <span>Twitch chat tonen</span>
+                </button>
+            </div>
+            {% if site.stream %}
+            <p class="audio-fallback-link">
+                Onderweg? <a href="{{ site.stream }}">Luister via de audiostream</a>.
+            </p>
+            {% endif %}
+        </div>
+    </div>
+</header>
+
+<main>
+    <section id="timetable" class="section">
+        <h2><i class="fas fa-clock" aria-hidden="true"></i> Timetable</h2>
+        <div class="timetable-grid">
+            {% if site.timetable and site.timetable.size > 0 %}
+            {% for slot in site.timetable %}
+            <div class="slot-card" data-start="{{ slot.start_min }}" data-end="{{ slot.end_min }}">
+                {% if slot.photo %}
+                <div class="slot-photo">
+                    <img src="{{ slot.photo }}" alt="{{ slot.show }}" loading="lazy">
+                    <span class="slot-now-badge">NU</span>
+                </div>
+                {% endif %}
+                <div class="slot-body">
+                    <span class="slot-time">{{ slot.start }} &ndash; {{ slot.end }}</span>
+                    <strong class="slot-show">{{ slot.show }}</strong>
+                    <span class="slot-host">{{ slot.host }}</span>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p class="timetable-empty">
+                <i class="fas fa-hourglass-half" aria-hidden="true"></i>
+                Timetable wordt binnenkort bekendgemaakt!
+            </p>
+            {% endif %}
+        </div>
+    </section>
+
+    <section id="sfeer" class="section">
+        <h2><i class="fas fa-camera" aria-hidden="true"></i> Sfeerbeleving</h2>
+        <div class="gallery-grid">
+            {% for photo in site.gallery %}
+            <button type="button" class="gallery-tile" data-lightbox-index="{{ forloop.index0 }}">
+                <img src="{{ photo.src }}" alt="{{ photo.alt }}" loading="lazy">
+                <span class="gallery-tile__zoom" aria-hidden="true"><i class="fas fa-search-plus"></i></span>
+            </button>
+            {% endfor %}
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button type="button" class="lightbox__close" id="lightbox-close" aria-label="Sluiten"><i class="fas fa-times" aria-hidden="true"></i></button>
+        <button type="button" class="lightbox__nav lightbox__nav--prev" id="lightbox-prev" aria-label="Vorige foto"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+        <img class="lightbox__img" id="lightbox-img" src="" alt="">
+        <button type="button" class="lightbox__nav lightbox__nav--next" id="lightbox-next" aria-label="Volgende foto"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+    </div>
+
+    <section id="ons-verhaal" class="section section--about">
+        <h2><i class="fas fa-record-vinyl" aria-hidden="true"></i> Wie zijn wij?</h2>
+        <div class="about__body">
+            <p>
+                Het begon in 2017 met een stel vrienden die stopten met het programma's maken voor de lokale omroep. 
+                Na een jaar radiostilte kroop het bloed toch weer waar het niet gaan kon en werd Pretflat FM geboren.
+            </p>
+            <p>
+                Alle talenten weer samen onder één dak, puur voor een dikke bak plezier en een lading hits. De hele dag verschillende stijlen, quizzes en andere gekkigheid. 
+                Inmiddels is de originele Pretflat studio verhuisd van Haaksbergen naar Studio 074. Maar dat mag de pret niet drukken!
+            </p>
+        </div>
+    </section>
+
+    <section id="socials" class="section">
+        <h2><i class="fas fa-share-alt" aria-hidden="true"></i> Socials</h2>
+        <ul class="social-grid">
+            {% if site.twitch_username %}
+            <li><a href="https://twitch.tv/{{ site.twitch_username }}" target="_blank" rel="noopener"><i class="fab fa-twitch" aria-hidden="true"></i><span>Twitch</span></a></li>
+            {% endif %}
+
+            {% if site.youtube_username %}
+            <li><a href="https://youtube.com/channel/{{ site.youtube_username }}" target="_blank" rel="noopener"><i class="fab fa-youtube" aria-hidden="true"></i><span>Youtube</span></a></li>
+            {% endif %}
+
+            {% if site.twitter_hashtag %}
+            <li><a href="https://twitter.com/search?q=%23{{ site.twitter_hashtag }}" target="_blank" rel="noopener"><i class="fab fa-twitter" aria-hidden="true"></i><span>Twitter</span></a></li>
+            {% endif %}
+
+            {% if site.facebook_username %}
+            <li><a href="https://facebook.com/{{ site.facebook_username }}" target="_blank" rel="noopener"><i class="fab fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
+            {% endif %}
+
+            {% if site.instagram_username %}
+            <li><a href="https://instagram.com/{{ site.instagram_username }}" target="_blank" rel="noopener"><i class="fab fa-instagram" aria-hidden="true"></i><span>Instagram</span></a></li>
+            {% endif %}
+
+            {% if site.lastfm_username %}
+            <li><a href="https://www.last.fm/user/{{ site.lastfm_username }}" target="_blank" rel="noopener"><i class="fab fa-lastfm" aria-hidden="true"></i><span>Last.fm</span></a></li>
+            {% endif %}
+
+            {% if site.telegram_username %}
+            <li><a href="https://t.me/{{ site.telegram_username }}" target="_blank" rel="noopener"><i class="fab fa-telegram" aria-hidden="true"></i><span>Telegram</span></a></li>
+            {% endif %}
+        </ul>
+    </section>
+</main>

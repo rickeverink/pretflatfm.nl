@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+        <!--
+            Welkom op de page source van pretflatfm.nl
+            Leuk dat je dit gevonden hebt!
+
+            Stuur even je gegevens naar pretflatfm@gmail.com en je ontvangt van ons een presentje zodat je dag nog leuker wordt!
+        -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{{ page.title | default: site.title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="{{ page.title | default: site.title }}">
+        <meta name="theme-color" content="#ffec01">
+        <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+        {% if site.favicon_img %}
+        <link rel="shortcut icon" href="{{ site.favicon_img_path }}" />
+        {% endif %}
+        <link rel="stylesheet" href="{{ "/css/front.css" | prepend: site.baseurl }}">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Baloo+2:500,700,800&subset=latin" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    </head>
+    <body id="top">
+        {% include nav.html %}
+
+        {{ content }}
+
+        {% include footer.html %}
+        {% include docked-player.html %}
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-136064423-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-136064423-1');
+    </script>
+
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script type="text/javascript">
+        (function () {
+            var embedEl = document.getElementById('twitch-embed');
+            if (!embedEl) { return; }
+
+            var liveDot = document.getElementById('live-dot');
+            var liveLabel = document.getElementById('live-label');
+            var streamFrame = document.querySelector('.stream-frame');
+            var chatToggle = document.getElementById('chat-toggle');
+            var showChat = false;
+
+            function setLiveStatus(isLive) {
+                liveDot.classList.toggle('is-live', isLive);
+                liveLabel.textContent = isLive ? 'Live op Twitch' : 'Offline';
+            }
+
+            function renderEmbed() {
+                embedEl.innerHTML = '';
+                var embed = new Twitch.Embed('twitch-embed', {
+                    channel: '{{ site.twitch_username }}',
+                    layout: showChat ? 'video-with-chat' : 'video',
+                    width: '100%',
+                    height: '100%'
+                });
+                embed.addEventListener(Twitch.Embed.ONLINE, function () { setLiveStatus(true); });
+                embed.addEventListener(Twitch.Embed.OFFLINE, function () { setLiveStatus(false); });
+            }
+
+            renderEmbed();
+
+            if (chatToggle) {
+                chatToggle.addEventListener('click', function () {
+                    showChat = !showChat;
+                    streamFrame.classList.toggle('has-chat', showChat);
+                    chatToggle.classList.toggle('is-active', showChat);
+                    chatToggle.querySelector('span').textContent = showChat ? 'Chat verbergen' : 'Chat tonen';
+                    renderEmbed();
+                });
+            }
+        })();
+    </script>
+
+    <script type="text/javascript">
+        (function () {
+            var eventDate = "{{ site.event_date }}";
+            var now = new Date();
+            var todayLocal = now.getFullYear() + '-' +
+                String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                String(now.getDate()).padStart(2, '0');
+
+            if (todayLocal !== eventDate) { return; }
+
+            var nowMinutes = now.getHours() * 60 + now.getMinutes();
+            if (nowMinutes < 540) { nowMinutes += 1440; } // event runs 09:00 -> past midnight
+
+            document.querySelectorAll('.slot-card').forEach(function (card) {
+                var start = parseInt(card.dataset.start, 10);
+                var end = parseInt(card.dataset.end, 10);
+                if (nowMinutes >= start && nowMinutes < end) {
+                    card.classList.add('is-now');
+                }
+            });
+        })();
+    </script>
+
+    {% if site.stream %}
+    <script type="text/javascript">
+        (function () {
+            var player = document.getElementById('docked-player');
+            if (!player) { return; }
+
+            var audio = document.getElementById('docked-player-audio');
+            var toggle = document.getElementById('docked-player-toggle');
+            var close = document.getElementById('docked-player-close');
+            var volume = document.getElementById('docked-player-volume');
+            var listenLiveBtn = document.getElementById('btn-listen-live');
+
+            audio.volume = volume.value / 100;
+
+            function playStream() {
+                player.classList.remove('is-hidden');
+                document.body.classList.remove('player-hidden');
+                audio.play();
+            }
+
+            toggle.addEventListener('click', function () {
+                if (audio.paused) { playStream(); } else { audio.pause(); }
+            });
+
+            volume.addEventListener('input', function () {
+                audio.volume = volume.value / 100;
+            });
+
+            audio.addEventListener('play', function () { player.classList.add('is-playing'); });
+            audio.addEventListener('pause', function () { player.classList.remove('is-playing'); });
+
+            close.addEventListener('click', function () {
+                audio.pause();
+                player.classList.add('is-hidden');
+                document.body.classList.add('player-hidden');
+            });
+
+            if (listenLiveBtn) {
+                listenLiveBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    playStream();
+                });
+            }
+        })();
+    </script>
+    {% endif %}
+
+    <script type="text/javascript">
+        (function () {
+            var lightbox = document.getElementById('lightbox');
+            var tiles = Array.prototype.slice.call(document.querySelectorAll('.gallery-tile'));
+            if (!lightbox || !tiles.length) { return; }
+
+            var img = document.getElementById('lightbox-img');
+            var closeBtn = document.getElementById('lightbox-close');
+            var prevBtn = document.getElementById('lightbox-prev');
+            var nextBtn = document.getElementById('lightbox-next');
+            var currentIndex = 0;
+
+            function show(index) {
+                currentIndex = (index + tiles.length) % tiles.length;
+                var tileImg = tiles[currentIndex].querySelector('img');
+                img.src = tileImg.src;
+                img.alt = tileImg.alt;
+            }
+
+            function open(index) {
+                show(index);
+                lightbox.classList.add('is-open');
+                lightbox.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function close() {
+                lightbox.classList.remove('is-open');
+                lightbox.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            tiles.forEach(function (tile, index) {
+                tile.addEventListener('click', function () { open(index); });
+            });
+
+            closeBtn.addEventListener('click', close);
+            prevBtn.addEventListener('click', function () { show(currentIndex - 1); });
+            nextBtn.addEventListener('click', function () { show(currentIndex + 1); });
+
+            lightbox.addEventListener('click', function (e) {
+                if (e.target === lightbox) { close(); }
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (!lightbox.classList.contains('is-open')) { return; }
+                if (e.key === 'Escape') { close(); }
+                if (e.key === 'ArrowLeft') { show(currentIndex - 1); }
+                if (e.key === 'ArrowRight') { show(currentIndex + 1); }
+            });
+        })();
+    </script>
+    </body>
+</html>

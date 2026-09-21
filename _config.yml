@@ -1,13 +1,21 @@
 # Site settings
-name: Zaterdag 14-06-25
-description: Van 09:00 tot 01:00
+name: Zaterdag 24-10-26
+description: 09:00 tot 01:00
+tagline: "No pret, you're flat!"
 url: ""
 title: Pretflat FM - Live Visual Radio
-keywords: 
+keywords:
+
+studio_name: Studio 074
+
+# Update this each year alongside `name`/`description` above (format: YYYY-MM-DD).
+# Used client-side to only highlight the "now playing" timetable slot on event day itself.
+event_date: "2026-10-24"
 
 stream: "https://stream.pretflatfm.nl/stream"
 
 whatsapp_number: 31613443414
+whatsapp_community_code: LpCxOAbN0olIMNpVYvc8hr
 facebook_username: pretflatfm
 instagram_username:  pretflatfm
 # youtube_username: UCN1R3cUC0jUFpohKSu_Fnow
@@ -25,6 +33,105 @@ front_img_path: "imgs/background.jpg"
 favicon_img: yes
 favicon_img_path: "imgs/favicon.ico"
 
+# Timetable — start/end are for display, *_min are minutes-after-midnight
+# (past-midnight slots continue past 1440, e.g. 01:00 -> 1500) used for the
+# client-side "now playing" highlight. `photo` is a placeholder — drop a real
+# photo in imgs/timetable/ using the same filename to replace it, no code changes needed.
+#
+# Photo spec (timetable): shown cropped to 4:3, max ~320px wide in the layout.
+# Aanleveren als: JPG, 4:3 beeldverhouding, ca. 1200x900px, bij voorkeur onder 300-500KB.
+# Onderwerp liever gecentreerd in beeld, want de rand kan afgesneden worden bij het bijsnijden.
+timetable:
+  - start: "09:00"
+    end: "11:00"
+    start_min: 540
+    end_min: 660
+    show: "TGI(P)F"
+    host: "Reyer van Harten"
+    photo: "imgs/timetable/tgipf.jpg"
+  - start: "11:00"
+    end: "13:00"
+    start_min: 660
+    end_min: 780
+    show: "Gewoon Auke"
+    host: "Auke Verbeek"
+    photo: "imgs/timetable/gewoon-auke.jpg"
+  - start: "13:00"
+    end: "15:00"
+    start_min: 780
+    end_min: 900
+    show: "Update FM"
+    host: "Matthijs Prins"
+    photo: "imgs/timetable/update-fm.jpg"
+  - start: "15:00"
+    end: "17:00"
+    start_min: 900
+    end_min: 1020
+    show: "Zotte Zaterdagmiddag Zjow"
+    host: "Joost van Gelder & Jörgen Bok"
+    photo: "imgs/timetable/zotte-zaterdagmiddag-zjow.jpg"
+  - start: "17:00"
+    end: "19:00"
+    start_min: 1020
+    end_min: 1140
+    show: "De Rick & Anne-Fleur Show"
+    host: "Rick Everink & Anne-Fleur Kramer"
+    photo: "imgs/timetable/de-rick-anne-fleur-show.jpg"
+  - start: "19:00"
+    end: "21:00"
+    start_min: 1140
+    end_min: 1260
+    show: "The Fuzz"
+    host: "Stony Waanders & Friends"
+    photo: "imgs/timetable/the-fuzz.jpg"
+  - start: "21:00"
+    end: "23:00"
+    start_min: 1260
+    end_min: 1380
+    show: "Dance Into The Night"
+    host: "Rob Leferink & Nick Kroep"
+    photo: "imgs/timetable/dance-into-the-night.jpg"
+  - start: "23:00"
+    end: "01:00"
+    start_min: 1380
+    end_min: 1500
+    show: "The 11th Hour"
+    host: "Remco Koopmans & Kenny Masselink"
+    photo: "imgs/timetable/the-11th-hour.jpg"
+  - start: "01:00"
+    end: "xx:xx"
+    start_min: 1500
+    end_min: 1620
+    show: "Radio Actief"
+    host: "Various DJ's"
+    photo: "imgs/timetable/radio-actief.jpg"
+
+# Sfeerbeelden gallery on the homepage — all placeholders for now.
+# Drop real photos into imgs/gallery/ (any filename) and list them here.
+#
+# Photo spec (sfeerbeelden): dezelfde foto wordt gebruikt als vierkant-achtig
+# thumbnail (4:3 bijgesneden, ca. 300px breed) EN als grote foto in de lightbox
+# (fullscreen-weergave, ongecropt, tot ~1100px breed / 85% schermhoogte op desktop).
+# Aanleveren als: JPG, liggend formaat (bij voorkeur 4:3 of 3:2), minimaal 1600x1200px
+# zodat de fullscreen-weergave ook op grote/retina-schermen scherp blijft.
+# Bij voorkeur onder de 500KB-1MB per foto voor een snelle laadtijd.
+gallery:
+  - src: "imgs/gallery/sfeerbeeld-1.jpg"
+    alt: "Sfeerbeeld 1 — BBQ boys"
+  - src: "imgs/gallery/sfeerbeeld-2.jpg"
+    alt: "Sfeerbeeld 2 — Big Mic Energy"
+  - src: "imgs/gallery/sfeerbeeld-3.jpg"
+    alt: "Sfeerbeeld 3 — Pizza time"
+  - src: "imgs/gallery/sfeerbeeld-4.jpg"
+    alt: "Sfeerbeeld 4 — Stekkertjes snoertjes"
+  - src: "imgs/gallery/sfeerbeeld-5.jpg"
+    alt: "Sfeerbeeld 5 — Dorstlessers"
+  - src: "imgs/gallery/sfeerbeeld-6.jpg"
+    alt: "Sfeerbeeld 6 — Cockpit"
+  - src: "imgs/gallery/sfeerbeeld-7.jpg"
+    alt: "Sfeerbeeld 7 — Cheers"
+  - src: "imgs/gallery/sfeerbeeld-8.jpg"
+    alt: "Sfeerbeeld 8 — The boys"
 
 # Build settings
 markdown: kramdown
