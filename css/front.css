@@ -1023,6 +1023,7 @@ h2 i {
         font-size: 0.85rem;
     }
 
+    .nav__brand img,
     .nav__brand span {
         display: none;
     }
